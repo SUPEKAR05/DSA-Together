@@ -1,0 +1,38 @@
+{
+    public:
+    
+    bool isAnagram( string stra, string strb){
+    if (stra.length() != strb.length()) {
+        return false;
+    }
+    
+    
+    unordered_map<char, int> Map;
+    
+    for (int i = 0; i < stra.length(); i++) {
+        Map[stra[i]]++;
+    }
+   
+    for (int i = 0; i < strb.length(); i++) {
+      
+        if (Map.find(strb[i]) != Map.end()) {
+           
+            Map[strb[i]] -= 1;
+        }
+        else {
+            return false;
+        }
+    }
+ 
+    
+    for (auto items : Map) {
+        if (items.second != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+        
+    
+
+};
